@@ -1,10 +1,8 @@
 import subprocess
-import time
 import detector
 import cv2
-import os
-temp_directory = "/home/sachin/Personal/Projects/Python/animal_intrusion_1/temp_images/"  # to store clicked file temporarily on machine
 
+temp_directory = "/home/sachin/Personal/Projects/Python/animal_intrusion_1/temp_images/"  # to store clicked file temporarily on machine
 def retrieve_file(): # retrieve filename to dump it locally
     cmd = "adb shell ls -lt /sdcard/DCIM/Camera/ | awk 'NR>1 {print $NF; exit}'"
     result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
@@ -19,7 +17,6 @@ def retrieve_file(): # retrieve filename to dump it locally
 def send_keyevent(keycode): # click picture
     command = f"adb shell input keyevent {keycode}"
     subprocess.run(command, shell = True)
-
 
 def launch():
     print("In launch")
@@ -64,44 +61,3 @@ def launch():
             break
     # os.remove(filename)
     cv2.destroyAllWindows()
-
-
-# send_keyevent(24) # clicking ol down key to capture picture
-# launch()
-launch()
-
-# def launch():
-#     cv2.namedWindow("input", cv2.WINDOW_NORMAL)
-#     cv2.namedWindow("Predicted", cv2.WINDOW_NORMAL)
-#     # cap =cv2.VideoCapture(2) # change it later and provide option in the window layout
-#     ctr = 0if cv2.waitKey(10) & 0xFF == ord('q'):
-#             break
-#     while True:
-#         imgHolder, detectHolder = 0,0 # image holding variables
-#         # _,img = cap.read()
-#         send_keyevent(24) # clicking ol down key to capture picture
-#         # time.sleep(5) # will have to set this according to the S value in the camera
-#         try:
-#             filename = temp_directory + retrieve_file()
-#             img = cv2.imread(filename)
-#             input_img = img.copy()
-#             detected_obj = detector.predict(img)
-#             cv2.imshow("input", input_img)
-#             cv2.imshow("Predicted", detected_obj)
-#             cv2.imwrite(temp_directory+"predicted/"+str(ctr)+".jpg", detected_obj)
-#             imgHolder, detectHolder = input_img, detected_obj
-#             ctr += 1
-#             print("try block")
-#         except:
-#             cv2.imshow("input", input_img)
-#             cv2.imshow("Predicted", detected_obj)
-#             print("except block")
-#
-#         # os.remove(filename)
-#
-#         if cv2.waitKey(10) & 0xFF == ord('q'):
-#             break
-#     cv2.destroyAllWindows()
-#
-#
-#

@@ -1,5 +1,7 @@
+# Utlity to verify USB connection and change from USB to WIFI.
 import subprocess
 import time
+
 # Function to check if the device is connected using ADB
 def verify_connection():
     cmd = "adb devices"
@@ -16,6 +18,7 @@ def verify_connection():
         print("Device is not connected!!! Try again.")
     return False
 
+
 # Function to extract the IP of the connected device
 def extract_ip():
     cmd = "adb shell ifconfig"
@@ -28,21 +31,24 @@ def extract_ip():
         try:
             result = result.stdout.rstrip()
             result = result.split("\n")
-            ip = [i.strip() for i in result if "inet addr:192.168" in i][0].split(" ")[1][5:]
+            ip = [i.strip() for i in result if "inet addr:192.168" in i][0].split(" ")[
+                1
+            ][5:]
             # print(ip)
             return ip
         except:
             print("Error in connecting!!! Please connect device with the same wifi.")
 
 
-
 # Changing connection mode to wifi
 def connect_ip(response_ip):
     cmd = "adb tcpip 5555"
-    result = subprocess.run(cmd, capture_output=True, text=True, shell=True) # assigning port
+    result = subprocess.run(
+        cmd, capture_output=True, text=True, shell=True
+    )  # assigning port
     # print(result.stdout.rstrip())
     cmd = f"adb connect {response_ip}:5555"
-    result = subprocess.run(cmd, capture_output=True, text= True, shell=True)
+    result = subprocess.run(cmd, capture_output=True, text=True, shell=True)
     print(result.stdout.rstrip())
 
 
@@ -53,6 +59,7 @@ def start_camera():
     result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
     time.sleep(10)
     print(result.stdout.rstrip())
+
 
 #
 # VER_CON = verify_connection()
@@ -67,8 +74,3 @@ def start_camera():
 #     connect_ip(response_ip)
 #     # remove device from USB connection
 #     start_camera()
-
-
-
-
-
