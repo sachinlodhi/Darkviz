@@ -1,14 +1,11 @@
-import subprocess
-import sys
+
 import PySimpleGUI as sg
 import initial_setup as setup
 import temp
 import threading
 import multiprocessing
+import connector
 ip=""
-# sg.popup_ok('This is a dialog box', title='Dialog Box')
-
-
 def main():
     global ip
     layout = [
@@ -29,7 +26,9 @@ def main():
             exit
             break
         if event == 'Run':                  # the two lines of code needed to get button and run command
-            runCommand(cmd=values['_IN_'], window=window)
+            pass
+            # runCommand(cmd=values['_IN_'], window=window)
+
         # Connection Verify
         if event == "Verify":
             connection = setup.verify_connection()
@@ -46,16 +45,16 @@ def main():
 
         # Start detection
         if event == "Start Detection":
-            # if video_process and video_process.is_alive():
-            #     sg.popup('Video feed already running!')
-            # else:
-            #     start_video_feed()
-            cam_num = 2
-            t1 = threading.Thread(target=temp.feed, args=(cam_num,), daemon=True)
+            cam_num = 0
+            # t1 = threading.Thread(target=temp.feed, args=(cam_num,), daemon=True)
+            t1 = threading.Thread(target=connector.launch, args=(), daemon=True)
             t1.start()
             # t1.join(1)
-
     window.Close()
+
+main()
+
+
 
 # This function does the actual "running" of the command.  Also watches for any output. If found output is printed
 # def runCommand(cmd, timeout=None, window=None):
@@ -70,4 +69,3 @@ def main():
 #     return (retval, output)                         # also return the output just for fun
 
 
-main()
