@@ -1,6 +1,6 @@
 # 📷 Android Camera Object Detection with YOLOv5
 
-![Android Camera Object Detection](https://example.com/path/to/image.png)
+![Android Camera Object Detection](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.v7labs.com%2Fblog%2Fyolo-object-detection&psig=AOvVaw3WYZzLRl52VRW9TMTGKEbi&ust=1692687049033000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCKC-ruSU7YADFQAAAAAdAAAAABAE)
 
 This project aims to provide a solution for object detection in low-light conditions using the Android camera. It utilizes YOLOv5, a state-of-the-art real-time object detection model, to identify objects in the captured images. The project is specifically designed to assist farmers in detecting objects of interest in low-light environments.
 
@@ -126,6 +126,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-If you have any questions, suggestions, or feedback, please feel free to contact me at [your-email@example.com](mailto:your-email@example.com).
+If you have any questions, suggestions, or feedback, please feel free to contact me at [sachinlodhi@csu.fullerton.edu](mailto:sachinlodhi@csu.fullerton.edu).
 
 Happy object detecting! 😊🌱📷
