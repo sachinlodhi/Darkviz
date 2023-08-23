@@ -24,7 +24,7 @@ This project aims to provide a solution for object detection in low-light condit
 1. Clone the repository:
 
    ```
-   git clone https://github.com/sachinlodhi/LL_IntDet.git
+   git clone [https://github.com/sachinlodhi/LL_IntDet.git](https://github.com/sachinlodhi/Darkviz)
    ```
 
 2. Connect your Android device to your computer via USB.
